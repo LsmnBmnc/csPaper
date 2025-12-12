@@ -7,12 +7,12 @@ export interface Submission {
 }
 
 export interface Score {
-  dimension: string; // e.g. "novelty" / "technical_quality" / ...
-  value: number;     // 0–5
+  dimension: string;
+  value: number; // 0–5 的浮点
 }
 
 export interface Review {
-  reviewer_id: string; // e.g. "reviewer_1"
+  reviewer_id: string;
   text: string;
 }
 
@@ -29,7 +29,7 @@ export interface ReviewResponse {
   review_result: ReviewResult;
 }
 
-export interface ApiError {
+export interface ApiErrorShape {
   error: {
     code: string;
     message: string;
