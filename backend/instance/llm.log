@@ -24,3 +24,9 @@ Traceback (most recent call last):
 json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 2025-12-11 22:08:30,923 INFO [cspaper.llm] Calling DeepSeek model=deepseek-chat, prompt_chars=42721
 2025-12-11 22:08:50,788 INFO [cspaper.llm] Sanitize: removed Markdown code fence from LLM content.
+2025-12-12 01:09:45,588 ERROR [cspaper.llm] DEEPSEEK_API_KEY not set
+2025-12-12 01:15:32,799 ERROR [cspaper.llm] DEEPSEEK_API_KEY not set
+2025-12-12 01:16:06,708 INFO [cspaper.llm] Calling DeepSeek model=deepseek-chat, prompt_chars=42721
+2025-12-12 01:16:29,713 INFO [cspaper.llm] Sanitize: removed Markdown code fence from LLM content.
+2025-12-12 01:17:09,101 INFO [cspaper.llm] Calling DeepSeek model=deepseek-chat, prompt_chars=42721
+2025-12-12 01:17:26,945 INFO [cspaper.llm] Sanitize: removed Markdown code fence from LLM content.

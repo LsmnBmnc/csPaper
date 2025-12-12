@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { submitReview } from "../services/reviewApi";
 import type { ReviewResponse } from "../types/review";
 
@@ -10,6 +10,18 @@ export function UploadPage() {
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  useEffect(() => {
+    const prevent = (e: DragEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    window.addEventListener("dragover", prevent);
+    window.addEventListener("drop", prevent);
+    return () => {
+      window.removeEventListener("dragover", prevent);
+      window.removeEventListener("drop", prevent);
+    };
+  }, []);
   const handleFileSelected = useCallback(
     async (file: File | null) => {
       if (!file) {
@@ -20,7 +32,9 @@ export function UploadPage() {
       setError(null);
       setResult(null);
 
-      if (file.type !== "application/pdf") {
+      const isPdfType = file.type === "application/pdf";
+      const isPdfName = file.name.toLowerCase().endsWith(".pdf");
+      if (!isPdfType && !isPdfName) {
         setError("Only PDF files are supported. Please select a PDF.");
         return;
       }
@@ -151,7 +165,7 @@ export function UploadPage() {
         <input
           ref={fileInputRef}
           type="file"
-          accept="application/pdf"
+          accept="application/pdf,.pdf"
           style={{ display: "none" }}
           onChange={onFileInputChange}
         />
